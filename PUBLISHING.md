@@ -1,24 +1,25 @@
-# Publishing this repository on GitHub
+# Maintaining this repository on GitHub
 
 Target: https://github.com/martapavelka/nuclei-Examples-reproducibility
 
 The remote repository already exists. Do not run `gh repo create` or create another repository.
 
-## Upload with Git
+## Update with Git
 
-Extract the distribution archive and open a terminal inside its `nuclei-Examples-reproducibility` folder.
+For later updates, clone the existing repository and work in the cloned directory.
 
 ```bash
-git init -b main
+git clone https://github.com/martapavelka/nuclei-Examples-reproducibility.git
+cd nuclei-Examples-reproducibility
+# Edit the files you want to update before continuing.
 git add .
-git commit -m "Publish Section 3 reproducibility materials"
-git remote add origin https://github.com/martapavelka/nuclei-Examples-reproducibility.git
-git push -u origin main
+git commit -m "Update Examples reproducibility materials"
+git push
 ```
 
-This requires a local Git installation, a configured commit identity, and GitHub authentication (for example, an already authenticated GitHub CLI or Git Credential Manager). Do not paste passwords, access tokens, or private keys into ChatGPT. If the remote repository already has a commit, do not force-push; reconcile its history first.
+This requires a local Git installation, a configured commit identity, and GitHub authentication (for example, an already authenticated GitHub CLI or Git Credential Manager). Do not paste passwords, access tokens, or private keys into ChatGPT. If GitHub has changes that are not in your local clone, pull and reconcile those changes before pushing; do not force-push.
 
-Alternatively, on GitHub, use `Add file` > `Upload files` and drag the **contents** of the extracted folder into the upload area. Preserve all six directories at the repository root, along with `README.md`, `PUBLISHING.md`, `requirements-recommended.txt`, `scripts/`, and `.gitignore`. Never upload just the single ZIP archive. Browser uploads are limited to 100 files at a time; this distribution contains fewer than 100.
+For small documentation changes, use GitHub's web editor: open the file, click the pencil icon, make the change, and commit it. For larger updates, upload the changed files or use Git as shown above. Preserve the six package directories, `scripts/`, and the top-level dependency and documentation files. Do not upload a distribution ZIP in place of the extracted files.
 
 ## Verify after upload
 
