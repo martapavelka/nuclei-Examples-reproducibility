@@ -1,0 +1,7 @@
+# Install only as required for the computations you intend to reproduce.
+# Standard-library verification scripts do not require these packages.
+numpy
+scipy
+sympy
+networkx
+python-sat

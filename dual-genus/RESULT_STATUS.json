@@ -1,0 +1,15 @@
+{
+  "N0": {
+    "previous_project_result": "orientable dual-graph genus 3",
+    "package_status": "input + exact solver; rerun SAT to independently certify"
+  },
+  "N1": {
+    "previous_project_result": "orientable dual-graph genus 4",
+    "package_status": "input + exact solver; rerun SAT to independently certify"
+  },
+  "N00": {
+    "exact_result": 3,
+    "certificate_basis": "user rerun: genus <= 3 SAT = yes (22 faces); genus <= 2 SAT = no (24 faces); embedding Euler check 35-61+22=-4",
+    "package_status": "exact orientable dual-graph genus 3; run transcript archived as N00_exact_run.log"
+  }
+}

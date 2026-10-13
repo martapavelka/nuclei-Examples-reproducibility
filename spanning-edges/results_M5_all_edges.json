@@ -1,0 +1,371 @@
+{
+  "complex": "M5",
+  "spanning_edges": 28,
+  "all_pass": true,
+  "results": [
+    {
+      "edge": [
+        1,
+        10
+      ],
+      "collapse_pairs": 1746,
+      "terminal_dim": 1,
+      "V": 12,
+      "E": 12,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        1,
+        11
+      ],
+      "collapse_pairs": 1768,
+      "terminal_dim": 1,
+      "V": 8,
+      "E": 8,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        2,
+        4
+      ],
+      "collapse_pairs": 1749,
+      "terminal_dim": 1,
+      "V": 11,
+      "E": 11,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        2,
+        5
+      ],
+      "collapse_pairs": 1759,
+      "terminal_dim": 1,
+      "V": 11,
+      "E": 11,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        2,
+        6
+      ],
+      "collapse_pairs": 1758,
+      "terminal_dim": 1,
+      "V": 12,
+      "E": 12,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        2,
+        11
+      ],
+      "collapse_pairs": 1750,
+      "terminal_dim": 1,
+      "V": 10,
+      "E": 10,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        3,
+        6
+      ],
+      "collapse_pairs": 1756,
+      "terminal_dim": 1,
+      "V": 14,
+      "E": 14,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        3,
+        7
+      ],
+      "collapse_pairs": 1769,
+      "terminal_dim": 1,
+      "V": 15,
+      "E": 15,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        3,
+        8
+      ],
+      "collapse_pairs": 1755,
+      "terminal_dim": 1,
+      "V": 9,
+      "E": 9,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        3,
+        11
+      ],
+      "collapse_pairs": 1747,
+      "terminal_dim": 1,
+      "V": 15,
+      "E": 15,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        4,
+        6
+      ],
+      "collapse_pairs": 1729,
+      "terminal_dim": 1,
+      "V": 15,
+      "E": 15,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        4,
+        7
+      ],
+      "collapse_pairs": 1751,
+      "terminal_dim": 1,
+      "V": 11,
+      "E": 11,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        4,
+        8
+      ],
+      "collapse_pairs": 1732,
+      "terminal_dim": 1,
+      "V": 10,
+      "E": 10,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        4,
+        9
+      ],
+      "collapse_pairs": 1777,
+      "terminal_dim": 1,
+      "V": 9,
+      "E": 9,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        4,
+        10
+      ],
+      "collapse_pairs": 1712,
+      "terminal_dim": 1,
+      "V": 10,
+      "E": 10,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        4,
+        11
+      ],
+      "collapse_pairs": 1726,
+      "terminal_dim": 1,
+      "V": 8,
+      "E": 8,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        5,
+        7
+      ],
+      "collapse_pairs": 1759,
+      "terminal_dim": 1,
+      "V": 11,
+      "E": 11,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        5,
+        8
+      ],
+      "collapse_pairs": 1732,
+      "terminal_dim": 1,
+      "V": 8,
+      "E": 8,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        5,
+        10
+      ],
+      "collapse_pairs": 1717,
+      "terminal_dim": 1,
+      "V": 9,
+      "E": 9,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        5,
+        11
+      ],
+      "collapse_pairs": 1732,
+      "terminal_dim": 1,
+      "V": 12,
+      "E": 12,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        6,
+        8
+      ],
+      "collapse_pairs": 1726,
+      "terminal_dim": 1,
+      "V": 20,
+      "E": 20,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        6,
+        10
+      ],
+      "collapse_pairs": 1708,
+      "terminal_dim": 1,
+      "V": 12,
+      "E": 12,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        7,
+        10
+      ],
+      "collapse_pairs": 1736,
+      "terminal_dim": 1,
+      "V": 10,
+      "E": 10,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        8,
+        9
+      ],
+      "collapse_pairs": 1780,
+      "terminal_dim": 1,
+      "V": 8,
+      "E": 8,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        8,
+        10
+      ],
+      "collapse_pairs": 1706,
+      "terminal_dim": 1,
+      "V": 8,
+      "E": 8,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        8,
+        11
+      ],
+      "collapse_pairs": 1727,
+      "terminal_dim": 1,
+      "V": 13,
+      "E": 13,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        10,
+        11
+      ],
+      "collapse_pairs": 1716,
+      "terminal_dim": 1,
+      "V": 8,
+      "E": 8,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    {
+      "edge": [
+        10,
+        12
+      ],
+      "collapse_pairs": 1821,
+      "terminal_dim": 1,
+      "V": 11,
+      "E": 11,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    }
+  ]
+}

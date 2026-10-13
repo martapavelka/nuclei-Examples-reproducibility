@@ -1,0 +1,15 @@
+Package created 2026-10-06 from:
+- user-supplied dual_genus(1).py (copied byte-for-byte as dual_genus.py)
+- user-supplied Genus of Nuclei(1).ipynb (copied byte-for-byte as original_N0_Sage_notebook.ipynb)
+- N00/N0/N1 facet lists retained in the MP project computation history.
+
+The supplied notebook contains N0's facet list and the Sage commands X.flip_graph(); G.genus(), but no stored output from G.genus(). It is therefore provenance/exploratory material, not an exact numerical certificate.
+
+No PySAT/Sage execution was possible in the package-creation runtime. No missing SAT result has been inferred or fabricated.
+
+Update 2026-10-06:
+The user ran the packaged exact solver on N00 and supplied the console output archived verbatim in N00_exact_run.log:
+  genus <= 3? yes (>=22 faces)
+  genus <= 2? no  (>=24 faces)
+  GENUS = 3 (22 faces)
+This establishes exact orientable dual-graph genus 3 under the ordinary trust model for the SAT solver used by dual_genus.py. The package-creation runtime did not independently rerun PySAT.

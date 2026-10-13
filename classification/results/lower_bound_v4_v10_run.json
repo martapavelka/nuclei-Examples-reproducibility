@@ -1,0 +1,71 @@
+{
+  "program_sha256": "43ad26577b05eeb25309614c18250f774556d38812c5f0f42946c2ec4adc12e8",
+  "plantri": "build/plantri-master/plantri",
+  "plantri_sha256": "3a3e0701db6f4ac3ea925f897035c06ded00b86e8722ca8fbed43cbe08a01ffe",
+  "min_v": 4,
+  "max_v": 10,
+  "started": "2026-10-13T11:56:11+0000",
+  "vertices": {
+    "4": {
+      "spheres": 1,
+      "models": 0,
+      "rejections": {},
+      "survivors": 0,
+      "boundary_sha256": "b0d1b37d2e170a5fea2f2d668e9316ee70300883c7a1d425bf74b24d130c583d"
+    },
+    "5": {
+      "spheres": 1,
+      "models": 0,
+      "rejections": {},
+      "survivors": 0,
+      "boundary_sha256": "acd58e7881a665953eb5ab490c53e63e9f841fde1c93678e4368ef1afb2b4176"
+    },
+    "6": {
+      "spheres": 2,
+      "models": 0,
+      "rejections": {},
+      "survivors": 0,
+      "boundary_sha256": "24ed34dd104c9f7ea3c56d48b11f19ed4fcff2c13d8066cab98905e113131b0a"
+    },
+    "7": {
+      "spheres": 5,
+      "models": 0,
+      "rejections": {},
+      "survivors": 0,
+      "boundary_sha256": "7a0021d1c68a0a26fda200cdefe7b0dfd2ecd12591d155acf6d7cdb813c9be0f"
+    },
+    "8": {
+      "spheres": 14,
+      "models": 0,
+      "rejections": {},
+      "survivors": 0,
+      "boundary_sha256": "e25fbb773188351a46a9dd68d10e76673bd756b689decb27424b0afa80df1f1f"
+    },
+    "9": {
+      "spheres": 50,
+      "models": 0,
+      "rejections": {},
+      "survivors": 0,
+      "boundary_sha256": "943739305a74b806c783402c15f492e95e21093a119f27409052d95aef7903d6"
+    },
+    "10": {
+      "spheres": 233,
+      "models": 0,
+      "rejections": {},
+      "survivors": 0,
+      "boundary_sha256": "e5a66e182c42f41434dcdb87729e918b1bd447accfdade7a403377090bb671ad"
+    }
+  },
+  "survivors": [],
+  "finished": "2026-10-13T11:56:12+0000",
+  "total_spheres": 306,
+  "total_models": 0,
+  "exhaustive": true,
+  "theorem_certified_by_run": true,
+  "verified_environment": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "solver": "SciPy optimize.milp (HiGHS)"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "criterion": "terminal_dim=1, components=1, beta1=1",
+  "results": {
+    "M7": {
+      "edge": [
+        10,
+        12
+      ],
+      "collapse_pairs": 1823,
+      "terminal_dim": 1,
+      "V": 9,
+      "E": 9,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    "M8": {
+      "edge": [
+        6,
+        12
+      ],
+      "collapse_pairs": 1834,
+      "terminal_dim": 1,
+      "V": 14,
+      "E": 14,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    },
+    "M9": {
+      "edge": [
+        7,
+        12
+      ],
+      "collapse_pairs": 1846,
+      "terminal_dim": 1,
+      "V": 10,
+      "E": 10,
+      "components": 1,
+      "beta1": 1,
+      "pass": true
+    }
+  }
+}

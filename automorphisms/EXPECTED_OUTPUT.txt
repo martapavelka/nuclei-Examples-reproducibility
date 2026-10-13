@@ -1,0 +1,6 @@
+Invariant vertex classes: [[1, 9], [2], [3, 7], [4, 11], [5, 6], [8, 10]]
+Candidate permutations after invariants: 32
+Number of automorphisms: 2
+  (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+  (9, 2, 7, 11, 6, 5, 3, 10, 1, 8, 4)
+VERIFIED: Aut(N00) = {id, sigma} ~= Z/2Z

@@ -1,0 +1,26 @@
+boundary triangles 18 boundary edges 27
+candidate tetrahedra 86
+14 raw 0 manifold 0 betti {} sec 0.01
+15 raw 0 manifold 0 betti {} sec 0.0
+16 raw 0 manifold 0 betti {} sec 0.0
+17 raw 0 manifold 0 betti {} sec 0.0
+18 raw 0 manifold 0 betti {} sec 0.0
+19 raw 0 manifold 0 betti {} sec 0.0
+20 raw 0 manifold 0 betti {} sec 0.0
+21 raw 0 manifold 0 betti {} sec 0.0
+22 raw 0 manifold 0 betti {} sec 0.0
+23 raw 0 manifold 0 betti {} sec 0.0
+24 raw 0 manifold 0 betti {} sec 0.0
+25 raw 0 manifold 0 betti {} sec 0.0
+26 raw 0 manifold 0 betti {} sec 0.0
+27 raw 0 manifold 0 betti {} sec 0.01
+28 raw 0 manifold 0 betti {} sec 0.01
+29 raw 0 manifold 0 betti {} sec 0.01
+30 raw 0 manifold 0 betti {} sec 0.01
+31 raw 0 manifold 0 betti {} sec 0.02
+32 raw 0 manifold 0 betti {} sec 0.07
+33 raw 1 manifold 1 betti {(1, 1, 1, 0): 1} sec 0.21
+34 raw 4 manifold 4 betti {(1, 1, 1, 0): 4} sec 0.82
+35 raw 4 manifold 4 betti {(1, 0, 0, 0): 1, (1, 1, 1, 0): 3} sec 0.52
+36 raw 0 manifold 0 betti {} sec 0.02
+UNIQUE BALL-HOMOLOGY SURVIVOR = N00

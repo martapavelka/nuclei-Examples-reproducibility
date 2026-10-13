@@ -1,0 +1,349 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{The Smallest Nontrivial Nucleus: An Exhaustive Computational Classification}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Nuclei and the search bounds}
+
+A \emph{nucleus} is a finite simplicial triangulation $N$ of the $3$-ball such that
+\begin{enumerate}[label=(\roman*)]
+    \item every vertex of $N$ lies on $\partial N$, and
+    \item every interior triangle contains at most one boundary edge.
+\end{enumerate}
+It is \emph{nontrivial} if it has more than one tetrahedron.  Write
+$v=f_0(N)$ and $t=f_3(N)$.  An edge is \emph{interior} if it does not
+belong to $\partial N$; since every vertex belongs to the boundary, interior
+edges are also called spanning edges.
+
+The classification below uses one geometric input, proved independently in
+the structural part of the companion paper:
+\begin{quote}
+\emph{All-interior-edge tetrahedron theorem.} Every nontrivial nucleus
+contains a tetrahedron all six of whose edges are interior.
+\end{quote}
+This result is not inferred from the enumeration.  It provides a necessary
+constraint for the search; none of the arguments below requires the converse.
+
+\begin{lemma}\label{lem:interior-edges}
+For a triangulated $3$-ball $N$ whose vertices all lie on its boundary,
+\[
+ f_1^{\mathrm{int}}(N)=t-v+3.
+\]
+\end{lemma}
+
+\begin{proof}
+The boundary is a triangulated $2$-sphere on $v$ vertices, so
+\[
+ f_1(\partial N)=3v-6,\qquad f_2(\partial N)=2v-4.
+\]
+Counting tetrahedron--triangle incidences gives
+\[
+ 4t=2f_2^{\mathrm{int}}(N)+2v-4,
+ \qquad f_2(N)=2t+v-2.
+\]
+Euler's formula $v-f_1(N)+f_2(N)-t=1$ now yields
+$f_1(N)=t+2v-3$.  Subtracting the $3v-6$ boundary edges proves the claim.
+\end{proof}
+
+\begin{proposition}\label{prop:tbound}
+If $N$ is a triangulated $3$-ball with all vertices on its boundary, then
+\[
+ \boxed{\ t\le\binom v2-2v+3.\ }
+\]
+In particular, $t\le28$ for $v\le10$, and $t\le36$ for $v=11$.
+\end{proposition}
+
+\begin{proof}
+At most $\binom v2$ edges occur in $N$, of which $3v-6$ lie on
+the boundary.  Lemma~\ref{lem:interior-edges} thus gives
+\[
+ t-v+3=f_1^{\mathrm{int}}(N)
+ \le\binom v2-(3v-6),
+\]
+which rearranges to the stated bound.  Its right-hand side is increasing
+for $v\ge3$ and takes the values $28$ and $36$ at $v=10$ and $v=11$.
+\end{proof}
+
+For $v=11$, the all-interior-edge tetrahedron theorem also gives
+$f_1^{\mathrm{int}}(N)\ge6$.  Lemma~\ref{lem:interior-edges} then implies
+\begin{equation}\label{eq:t-range}
+ 14\le t\le36.
+\end{equation}
+
+\section{Enumeration of the possible boundaries}
+
+The boundary of a nucleus is a simplicial triangulation of the $2$-sphere
+on the same vertex set.  Its combinatorial types are generated using
+\texttt{plantri}, developed by Gunnar Brinkmann and Brendan McKay.
+A maximal planar graph with its planar embedding determines a simplicial
+triangulated $2$-sphere.  For at least four vertices the embedding is unique
+up to reflection, so the triangulation mode of \texttt{plantri} lists the
+possible boundary spheres once up to isomorphism.
+
+The numbers of boundary types are
+\[
+\begin{array}{c|rrrrrrrr}
+ v&4&5&6&7&8&9&10&11\\ \hline
+ \#S&1&1&2&5&14&50&233&1249.
+\end{array}
+\]
+Thus there are $306$ types for $4\le v\le10$ and $1249$ types for $v=11$.
+We regenerated these counts with the supplied \texttt{plantri} source.
+The generated $v=11$ output is byte-for-byte identical to the
+$\texttt{data/boundaries\_v11.asc}$ file in the reproducibility package.
+
+\section{A necessary binary filling model}\label{sec:binary-model}
+
+Fix a boundary sphere $S$ on vertex set $V$, and write $E(S)$ for its
+edges.  Any triangle $F\notin S$ containing two or three edges of $E(S)$
+is \emph{forbidden}: if it belonged to a selected tetrahedron, the prescribed
+boundary incidences would force it to be an interior triangle, contrary to
+the nucleus condition.  We therefore discard every candidate tetrahedron
+containing a forbidden triangle.
+
+For each remaining four-element set $Q\subseteq V$ introduce a binary
+variable $x_Q$, recording whether $Q$ is selected as a tetrahedron.  For
+each nonboundary, nonforbidden triangle $F$ introduce a binary variable
+$y_F$, recording whether it is an interior triangle.  For each nonboundary
+edge $e$ introduce a binary variable $z_e$, recording whether it occurs in
+the filling.  The model imposes the following necessary conditions.
+
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item \textbf{Boundary triangles.} Every triangle of $S$ is incident with
+exactly one selected tetrahedron:
+\[
+ \sum_{Q\supset F}x_Q=1\qquad(F\in S).
+\]
+
+\item \textbf{Nonboundary triangles.} Every allowed triangle outside $S$
+is incident with zero or two selected tetrahedra:
+\[
+ \sum_{Q\supset F}x_Q=2y_F
+ \qquad(F\notin S\text{ allowed}).
+\]
+Forbidden triangles occur in no candidate tetrahedron.
+
+\item \textbf{Nonboundary edges.} For every $e\notin E(S)$, with
+$Q$ ranging over candidate tetrahedra containing $e$, impose
+\[
+ x_Q\le z_e\quad(e\subset Q),\qquad
+ z_e\le\sum_{Q\supset e}x_Q.
+\]
+Consequently $z_e=1$ if and only if $e$ occurs in a selected tetrahedron.
+
+\item \textbf{Tetrahedron bound.} Proposition~\ref{prop:tbound} yields
+\[
+ \sum_Qx_Q\le\binom v2-2v+3.
+\]
+
+\item \textbf{An all-interior-edge tetrahedron.} The independent structural
+theorem gives
+\[
+ \sum_{Q:\,\binom Q2\cap E(S)=\varnothing}x_Q\ge1.
+\]
+If no candidate $Q$ has all six edges outside $E(S)$, the system is
+immediately infeasible.
+
+\item \textbf{Vertex-link Euler characteristics.} Every vertex link in
+a triangulated $3$-ball with all vertices on the boundary is a disk and
+has Euler characteristic one.  The vertices, edges, and triangles of
+$\operatorname{lk}_N(a)$ correspond to the edges, triangles, and tetrahedra
+of $N$ containing $a$.  Thus, for each $a\in V$,
+\[
+ \#\{e\in E(S):a\in e\}
+ +\sum_{\substack{e\notin E(S)\\a\in e}}z_e
+ -\#\{F\in S:a\in F\}
+ -\sum_{\substack{F\notin S\text{ allowed}\\a\in F}}y_F
+ +\sum_{Q\ni a}x_Q=1.
+\]
+\end{enumerate}
+
+These conditions are \emph{necessary}, not asserted to be sufficient.
+Every nontrivial nucleus with boundary $S$ determines a feasible binary
+assignment by taking the indicators of its tetrahedra, interior triangles,
+and interior edges.  Conversely, a feasible assignment may fail to triangulate
+a $3$-ball.  Notice also that once the tetrahedron indicators $x_Q$ are
+fixed, the triangle and edge equations uniquely determine all $y_F$ and
+$z_e$.  This will justify blocking solutions using only the $x_Q$ variables.
+
+\section{The lower bound of eleven vertices}
+
+For each of the $306$ boundary spheres with $4\le v\le10$, the model in
+Section~\ref{sec:binary-model} was solved as a binary feasibility problem
+using SciPy's interface to HiGHS.  All $306$ instances were reported
+infeasible.  This lower-bound run was independently repeated for the present
+revision; the regenerated boundary files and machine-readable result log
+are included with the revised package.
+
+\begin{theorem}\label{thm:11vertices}
+Every nontrivial nucleus has at least $11$ vertices.
+\end{theorem}
+
+\begin{proof}
+Suppose a nontrivial nucleus $N$ has $v\le10$ vertices, and put
+$S=\partial N$.  Up to relabeling, $S$ is one of the $306$ boundary spheres
+from Section~2.  The tetrahedra, interior triangles, and interior edges of
+$N$ determine a feasible assignment for the corresponding binary model,
+by the observations in Section~\ref{sec:binary-model}.  But the exhaustive
+computation reports all such models infeasible, a contradiction.
+\end{proof}
+
+The argument does not need $3$-ball recognition: infeasibility already holds
+for a system of necessary combinatorial constraints.
+
+\section{Classification on eleven vertices}
+
+There are $1249$ possible boundary types, and by~\eqref{eq:t-range} it
+suffices to consider $14\le t\le36$.  For each boundary $S$ and each $t$
+in that range, the model is augmented by
+\begin{equation}\label{eq:exact-t}
+ \sum_Qx_Q=t.
+\end{equation}
+
+Whenever the solver finds a feasible tetrahedron indicator vector
+$\bar x\in\{0,1\}^m$, the program appends the \emph{no-good} inequality
+\[
+ \sum_{i:\bar x_i=1}x_i-\sum_{i:\bar x_i=0}x_i
+ \le |\{i:\bar x_i=1\}|-1.
+\]
+This excludes exactly that tetrahedron set.  As noted above, the $y$ and
+$z$ variables are uniquely determined by $x$, so no different filling is
+lost.  Iteration continues until HiGHS reports infeasibility; hence the
+procedure enumerates all feasible binary fillings, subject to the solver's
+reported decisions.
+
+For each enumerated filling, the program checks the exact simplicial
+incidences and local links and computes homology over $\mathbb F_2$.
+Every $3$-ball has Betti numbers $(1,0,0,0)$, so any other Betti vector
+excludes the filling.  The reported exhaustive counts are:
+
+\begin{center}
+\begin{tabular}{@{}c r r@{}}
+\toprule
+$t$ & feasible binary fillings & nuclei\\
+\midrule
+$14$--$29$ & $0$ & $0$\\
+$30$ & $8$ & $0$\\
+$31$ & $54$ & $0$\\
+$32$ & $213$ & $0$\\
+$33$ & $504$ & $0$\\
+$34$ & $623$ & $0$\\
+$35$ & $360$ & $1$\\
+$36$ & $67$ & $0$\\
+\midrule
+Total & $1829$ & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Of the $1829$ feasible fillings, $1828$ have mod-$2$ Betti numbers
+$(1,1,1,0)$ and therefore are not $3$-balls.  The only remaining filling
+occurs at $t=35$, on the stored boundary representative numbered $689$
+(using the program's zero-based indexing).  Its $35$ facets are recorded in
+$\texttt{results/n00\_facets.json}$.  We call it $N_{\min}$; it is the
+complex denoted \texttt{N00} in the computation.  Its vertices are labeled
+$0,\ldots,10$ in the data, corresponding to $1,\ldots,11$ in the main paper.
+A direct computation gives
+\[
+ f(N_{\min})=(11,54,79,35),\qquad
+ f(\partial N_{\min})=(11,27,18).
+\]
+
+The positive verification is separate from the homology rejection of the
+other fillings.  The facet list passes exact checks of the prescribed
+spherical boundary, triangle incidences, reducedness, dual connectivity,
+vertex-disk links, and the appropriate interval or circle edge links.
+In addition, a certificate of $89$ elementary simplicial collapses to a
+vertex is supplied and independently replayed.  The stricter replay
+verifier also checks that a supposedly free face has no additional
+cofaces in higher dimensions.  These checks show that the complex is a
+contractible PL $3$-manifold with boundary $S^2$ and hence a PL $3$-ball.
+Thus it is indeed a nucleus.
+
+\begin{theorem}[Classification at the minimum]\label{thm:unique11}
+Up to simplicial isomorphism, $N_{\min}$ is the unique nontrivial nucleus
+with $11$ vertices.  It has exactly $35$ tetrahedra and
+\[
+ f(N_{\min})=(11,54,79,35).
+\]
+In particular, there is no nontrivial $11$-vertex nucleus with $36$
+tetrahedra.
+\end{theorem}
+
+\begin{proof}
+Let $N$ be any nontrivial $11$-vertex nucleus.  Its boundary agrees,
+after relabeling, with one of the $1249$ generated spheres, and its
+number of tetrahedra satisfies $14\le t\le36$.  Therefore its tetrahedra
+induce one of the feasible binary fillings exhaustively enumerated for
+that boundary and $t$.  Every filling other than the displayed $N_{\min}$
+has nonzero first and second homology over $\mathbb F_2$, whereas
+$N_{\min}$ is positively verified to be a nucleus.  This proves uniqueness
+and the stated facet count.
+\end{proof}
+
+\begin{corollary}\label{cor:smallest}
+The minimum number of vertices of a nontrivial nucleus is $11$, and
+there is exactly one combinatorial type at this minimum: $N_{\min}$.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:11vertices} rules out fewer vertices, while
+Theorem~\ref{thm:unique11} establishes existence and uniqueness at $11$.
+\end{proof}
+
+\section{Reproducibility and scope of the certificates}
+
+The revised reproducibility package contains the \texttt{plantri} source,
+the common binary-model implementation, the $v=11$ classification driver,
+the $1249$ stored boundary representatives, the recorded $v=11$ count table,
+the facet list and collapse certificate for $N_{\min}$, and their checksums.
+It additionally contains the regenerated boundary data and complete
+machine-readable log for the $v\le10$ lower-bound run, together with a
+strict verifier of the collapse certificate.
+
+From the package root, the principal commands are:
+\begin{verbatim}
+unzip src/plantri-master.zip -d build
+make -C build/plantri-master plantri
+python src/nucleus_lower_bound.py \
+    --plantri build/plantri-master/plantri \
+    --min-v 4 --max-v 10 --out reproduced_lower_bound
+python src/classify_v11.py \
+    --plantri build/plantri-master/plantri \
+    --out reproduced_v11.json
+python src/verify_n00_collapse_strict.py \
+    results/n00_collapse_certificate.json
+sha256sum -c SHA256SUMS.txt
+\end{verbatim}
+
+\begin{remark}[Computational status]\label{rem:computational-status}
+The $v\le10$ infeasibility computation and the positive $N_{\min}$
+checks were rerun for this revision.  The $v=11$ counts above are the
+recorded results of the earlier exhaustive computation and were checked
+against the supplied result files, but the entire $v=11$ enumeration was
+not rerun for this revision.  It can be repeated with the included driver.
+
+The negative conclusions depend on the correctness of \texttt{plantri}, the
+binary-model encoding, and the HiGHS feasibility and infeasibility decisions.
+The package does not contain independently checkable certificates of
+infeasibility for each MILP instance.  In contrast, the positive collapse
+certificate is replayable independently of the MILP solver.  These
+qualifications apply to the computational classification theorem above.
+\end{remark}
+
+\end{document}

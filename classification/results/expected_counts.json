@@ -1,0 +1,122 @@
+{
+  "boundary_spheres": 1249,
+  "by_t": {
+    "14": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "15": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "16": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "17": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "18": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "19": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "20": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "21": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "22": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "23": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "24": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "25": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "26": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "27": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "28": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "29": {
+      "feasible_fillings": 0,
+      "rejected_homology_1_1_1_0": 0,
+      "nuclei": 0
+    },
+    "30": {
+      "feasible_fillings": 8,
+      "rejected_homology_1_1_1_0": 8,
+      "nuclei": 0
+    },
+    "31": {
+      "feasible_fillings": 54,
+      "rejected_homology_1_1_1_0": 54,
+      "nuclei": 0
+    },
+    "32": {
+      "feasible_fillings": 213,
+      "rejected_homology_1_1_1_0": 213,
+      "nuclei": 0
+    },
+    "33": {
+      "feasible_fillings": 504,
+      "rejected_homology_1_1_1_0": 504,
+      "nuclei": 0
+    },
+    "34": {
+      "feasible_fillings": 623,
+      "rejected_homology_1_1_1_0": 623,
+      "nuclei": 0
+    },
+    "35": {
+      "feasible_fillings": 360,
+      "rejected_homology_1_1_1_0": 359,
+      "nuclei": 1
+    },
+    "36": {
+      "feasible_fillings": 67,
+      "rejected_homology_1_1_1_0": 67,
+      "nuclei": 0
+    }
+  },
+  "total_feasible_fillings": 1829,
+  "total_nuclei": 1
+}

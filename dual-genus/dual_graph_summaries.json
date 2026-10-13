@@ -1,0 +1,35 @@
+{
+  "N00": {
+    "facets": 35,
+    "dual_V": 35,
+    "dual_E": 61,
+    "boundary_triangles": 18,
+    "connected": true,
+    "degree_counts": {
+      "3": 18,
+      "4": 17
+    }
+  },
+  "N0": {
+    "facets": 37,
+    "dual_V": 37,
+    "dual_E": 64,
+    "boundary_triangles": 20,
+    "connected": true,
+    "degree_counts": {
+      "3": 20,
+      "4": 17
+    }
+  },
+  "N1": {
+    "facets": 37,
+    "dual_V": 37,
+    "dual_E": 64,
+    "boundary_triangles": 20,
+    "connected": true,
+    "degree_counts": {
+      "3": 20,
+      "4": 17
+    }
+  }
+}

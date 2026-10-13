@@ -1,0 +1,885 @@
+{
+  "N0": {
+    "edge": [
+      9,
+      11
+    ],
+    "verified_trefoil": true,
+    "presentation": {
+      "remaining_relators": [
+        [
+          28,
+          28,
+          10,
+          10,
+          28
+        ]
+      ],
+      "remaining_generators": [
+        10,
+        28
+      ],
+      "initial_generators": 29,
+      "initial_relators": 36,
+      "vertex_count": 10,
+      "edge_count": 38,
+      "triangle_count": 36,
+      "tree_edges": [
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          12
+        ]
+      ],
+      "generators": {
+        "1": [
+          2,
+          5
+        ],
+        "2": [
+          2,
+          6
+        ],
+        "3": [
+          2,
+          7
+        ],
+        "4": [
+          2,
+          8
+        ],
+        "5": [
+          2,
+          10
+        ],
+        "6": [
+          3,
+          4
+        ],
+        "7": [
+          3,
+          5
+        ],
+        "8": [
+          3,
+          8
+        ],
+        "9": [
+          3,
+          10
+        ],
+        "10": [
+          3,
+          12
+        ],
+        "11": [
+          4,
+          5
+        ],
+        "12": [
+          4,
+          6
+        ],
+        "13": [
+          4,
+          7
+        ],
+        "14": [
+          4,
+          8
+        ],
+        "15": [
+          4,
+          10
+        ],
+        "16": [
+          4,
+          12
+        ],
+        "17": [
+          5,
+          6
+        ],
+        "18": [
+          5,
+          7
+        ],
+        "19": [
+          5,
+          8
+        ],
+        "20": [
+          5,
+          10
+        ],
+        "21": [
+          6,
+          7
+        ],
+        "22": [
+          6,
+          8
+        ],
+        "23": [
+          6,
+          10
+        ],
+        "24": [
+          6,
+          12
+        ],
+        "25": [
+          7,
+          8
+        ],
+        "26": [
+          7,
+          10
+        ],
+        "27": [
+          7,
+          12
+        ],
+        "28": [
+          8,
+          10
+        ],
+        "29": [
+          8,
+          12
+        ]
+      },
+      "tietze_eliminations": [
+        {
+          "eliminated_generator": 6,
+          "using_relator": [
+            6
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 7,
+          "using_relator": [
+            7
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 9,
+          "using_relator": [
+            9
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 12,
+          "using_relator": [
+            12
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 15,
+          "using_relator": [
+            15
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 18,
+          "using_relator": [
+            18
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 19,
+          "using_relator": [
+            19
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 20,
+          "using_relator": [
+            20
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 21,
+          "using_relator": [
+            21
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 22,
+          "using_relator": [
+            22
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 23,
+          "using_relator": [
+            23
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 25,
+          "using_relator": [
+            25
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 26,
+          "using_relator": [
+            26
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 1,
+          "using_relator": [
+            -1
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 8,
+          "using_relator": [
+            8,
+            -4
+          ],
+          "replacement": [
+            4
+          ]
+        },
+        {
+          "eliminated_generator": 17,
+          "using_relator": [
+            17,
+            -2
+          ],
+          "replacement": [
+            2
+          ]
+        },
+        {
+          "eliminated_generator": 2,
+          "using_relator": [
+            2,
+            24
+          ],
+          "replacement": [
+            -24
+          ]
+        },
+        {
+          "eliminated_generator": 3,
+          "using_relator": [
+            3,
+            -5
+          ],
+          "replacement": [
+            5
+          ]
+        },
+        {
+          "eliminated_generator": 5,
+          "using_relator": [
+            5,
+            27
+          ],
+          "replacement": [
+            -27
+          ]
+        },
+        {
+          "eliminated_generator": 4,
+          "using_relator": [
+            4,
+            28,
+            27
+          ],
+          "replacement": [
+            -27,
+            -28
+          ]
+        },
+        {
+          "eliminated_generator": 16,
+          "using_relator": [
+            16,
+            -10
+          ],
+          "replacement": [
+            10
+          ]
+        },
+        {
+          "eliminated_generator": 27,
+          "using_relator": [
+            -27,
+            -28,
+            29,
+            -10
+          ],
+          "replacement": [
+            -28,
+            29,
+            -10
+          ]
+        },
+        {
+          "eliminated_generator": 11,
+          "using_relator": [
+            11,
+            -24
+          ],
+          "replacement": [
+            24
+          ]
+        },
+        {
+          "eliminated_generator": 24,
+          "using_relator": [
+            24,
+            -13
+          ],
+          "replacement": [
+            13
+          ]
+        },
+        {
+          "eliminated_generator": 13,
+          "using_relator": [
+            13,
+            -14
+          ],
+          "replacement": [
+            14
+          ]
+        },
+        {
+          "eliminated_generator": 14,
+          "using_relator": [
+            14,
+            -28,
+            29,
+            -10,
+            -10
+          ],
+          "replacement": [
+            10,
+            10,
+            -29,
+            28
+          ]
+        },
+        {
+          "eliminated_generator": 29,
+          "using_relator": [
+            10,
+            10,
+            -29,
+            28,
+            28
+          ],
+          "replacement": [
+            28,
+            28,
+            10,
+            10
+          ]
+        }
+      ]
+    },
+    "normal_form": "cyclically conjugate to x^3 y^2 (x=g28, y=g10)",
+    "alexander": {
+      "abelianization_weights": {
+        "28": 2,
+        "10": -3
+      },
+      "fox_derivatives": {
+        "28": "t**2 + 1 + t**(-2)",
+        "10": "t**4 + t"
+      },
+      "alexander_polynomial": "t**2 - t + 1",
+      "determinant": 3
+    }
+  },
+  "N1": {
+    "edge": [
+      2,
+      3
+    ],
+    "verified_trefoil": true,
+    "presentation": {
+      "remaining_relators": [
+        [
+          22,
+          16,
+          -22,
+          16,
+          -22,
+          16
+        ]
+      ],
+      "remaining_generators": [
+        16,
+        22
+      ],
+      "initial_generators": 28,
+      "initial_relators": 33,
+      "vertex_count": 10,
+      "edge_count": 37,
+      "triangle_count": 33,
+      "tree_edges": [
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          4,
+          13
+        ]
+      ],
+      "generators": {
+        "1": [
+          4,
+          5
+        ],
+        "2": [
+          4,
+          7
+        ],
+        "3": [
+          4,
+          12
+        ],
+        "4": [
+          5,
+          6
+        ],
+        "5": [
+          5,
+          7
+        ],
+        "6": [
+          5,
+          8
+        ],
+        "7": [
+          5,
+          9
+        ],
+        "8": [
+          5,
+          11
+        ],
+        "9": [
+          5,
+          13
+        ],
+        "10": [
+          6,
+          7
+        ],
+        "11": [
+          6,
+          9
+        ],
+        "12": [
+          6,
+          11
+        ],
+        "13": [
+          6,
+          12
+        ],
+        "14": [
+          6,
+          13
+        ],
+        "15": [
+          7,
+          8
+        ],
+        "16": [
+          7,
+          9
+        ],
+        "17": [
+          7,
+          11
+        ],
+        "18": [
+          7,
+          12
+        ],
+        "19": [
+          7,
+          13
+        ],
+        "20": [
+          8,
+          9
+        ],
+        "21": [
+          8,
+          11
+        ],
+        "22": [
+          8,
+          12
+        ],
+        "23": [
+          8,
+          13
+        ],
+        "24": [
+          9,
+          11
+        ],
+        "25": [
+          9,
+          12
+        ],
+        "26": [
+          9,
+          13
+        ],
+        "27": [
+          11,
+          13
+        ],
+        "28": [
+          12,
+          13
+        ]
+      },
+      "tietze_eliminations": [
+        {
+          "eliminated_generator": 1,
+          "using_relator": [
+            1
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 3,
+          "using_relator": [
+            3
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 6,
+          "using_relator": [
+            6
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 15,
+          "using_relator": [
+            15
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 18,
+          "using_relator": [
+            18
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 4,
+          "using_relator": [
+            4
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 5,
+          "using_relator": [
+            5,
+            -2
+          ],
+          "replacement": [
+            2
+          ]
+        },
+        {
+          "eliminated_generator": 8,
+          "using_relator": [
+            8
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 10,
+          "using_relator": [
+            10,
+            -2
+          ],
+          "replacement": [
+            2
+          ]
+        },
+        {
+          "eliminated_generator": 12,
+          "using_relator": [
+            12
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 14,
+          "using_relator": [
+            14
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 25,
+          "using_relator": [
+            25
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 26,
+          "using_relator": [
+            26
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 27,
+          "using_relator": [
+            27
+          ],
+          "replacement": []
+        },
+        {
+          "eliminated_generator": 11,
+          "using_relator": [
+            11,
+            -7
+          ],
+          "replacement": [
+            7
+          ]
+        },
+        {
+          "eliminated_generator": 2,
+          "using_relator": [
+            2,
+            16,
+            -7
+          ],
+          "replacement": [
+            7,
+            -16
+          ]
+        },
+        {
+          "eliminated_generator": 7,
+          "using_relator": [
+            7,
+            -16,
+            19,
+            -9
+          ],
+          "replacement": [
+            9,
+            -19,
+            16
+          ]
+        },
+        {
+          "eliminated_generator": 23,
+          "using_relator": [
+            23,
+            -9
+          ],
+          "replacement": [
+            9
+          ]
+        },
+        {
+          "eliminated_generator": 9,
+          "using_relator": [
+            9,
+            -19,
+            16,
+            24
+          ],
+          "replacement": [
+            -24,
+            -16,
+            19
+          ]
+        },
+        {
+          "eliminated_generator": 19,
+          "using_relator": [
+            -19,
+            16
+          ],
+          "replacement": [
+            16
+          ]
+        },
+        {
+          "eliminated_generator": 24,
+          "using_relator": [
+            -24,
+            -16,
+            -13
+          ],
+          "replacement": [
+            -16,
+            -13
+          ]
+        },
+        {
+          "eliminated_generator": 13,
+          "using_relator": [
+            13,
+            28
+          ],
+          "replacement": [
+            -28
+          ]
+        },
+        {
+          "eliminated_generator": 21,
+          "using_relator": [
+            21,
+            -17
+          ],
+          "replacement": [
+            17
+          ]
+        },
+        {
+          "eliminated_generator": 17,
+          "using_relator": [
+            17,
+            -16
+          ],
+          "replacement": [
+            16
+          ]
+        },
+        {
+          "eliminated_generator": 20,
+          "using_relator": [
+            20,
+            -16,
+            28,
+            -16
+          ],
+          "replacement": [
+            16,
+            -28,
+            16
+          ]
+        },
+        {
+          "eliminated_generator": 28,
+          "using_relator": [
+            16,
+            -28,
+            16,
+            -22
+          ],
+          "replacement": [
+            16,
+            -22,
+            16
+          ]
+        }
+      ]
+    },
+    "normal_form": "substitution u=x^-1*y changes x*y*x^-1*y*x^-1*y into x^2*u^3 (x=g22, y=g16)",
+    "alexander": {
+      "abelianization_weights": {
+        "22": 3,
+        "16": 1
+      },
+      "fox_derivatives": {
+        "22": "-t + 1 - 1/t",
+        "16": "t**3 + t + 1/t"
+      },
+      "alexander_polynomial": "t**2 - t + 1",
+      "determinant": 3
+    }
+  }
+}

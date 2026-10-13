@@ -1,0 +1,16 @@
+User-provided exact run output, 2026-10-06
+
+facets 35, dim 3, dual graph V=35 E=61, boundary ridges 18
+degree counts: 3:18, 4:17
+heuristic upper bound: 4  [5.0s]
+genus <= 3? (>= 22 faces): yes  [1.0s]
+genus <= 2? (>= 24 faces): no  [0.5s]
+GENUS = 3   (22 faces, 6.5s)
+
+Interpretation:
+- SAT found a rotation system with at least 22 faces, giving an embedding of genus <= 3.
+- SAT returned UNSAT for at least 24 faces, ruling out genus <= 2.
+- Therefore the orientable genus is exactly 3.
+- Euler check for the reported embedding: 35 - 61 + 22 = -4 = 2 - 2*3.
+
+This transcript was supplied by the user after running the packaged solver. It is provenance for the exact N00 result; this package-creation runtime did not independently rerun PySAT.
