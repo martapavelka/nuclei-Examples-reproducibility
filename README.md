@@ -1,8 +1,8 @@
-# Nuclei: reproducibility of Section 3
+# Nuclei: reproducibility materials for the Examples section
 
 Repository: https://github.com/martapavelka/nuclei-Examples-reproducibility
 
-Computational data, verification programs, certificates, and recorded results for the examples and classification in Section 3 of the paper on **nuclei of triangulated 3-balls**.
+Computational data, verification programs, certificates, and recorded results accompanying the **Examples** section of our paper on nuclei.
 
 **What is in this repository:** the six original reproducibility packages as browsable directories, without nested ZIPs or compiled Python caches. Their source files, data, results, documentation, and per-package SHA256 manifests are preserved. Each directory has a more detailed README with the exact proof and verification scope.
 
