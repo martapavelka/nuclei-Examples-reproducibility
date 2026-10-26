@@ -1,0 +1,58 @@
+Independent genus SAT checks, 2026-10-23
+Z3 4.13.3.0 via system libz3.so.4
+
+COMMAND: python3 genus_sat_z3.py K4 0 30
+K4 V 4 E 6 test genus <= 0 required faces 4
+formula size 15332 variables 92 clauses 399 time prepare 0.0
+sending to Z3
+loaded Z3 0.0
+Z3 answer 1 SAT elapsed 0.0
+
+COMMAND: python3 genus_sat_z3.py K5 0 30
+K5 V 5 E 10 test genus <= 0 required faces 7
+formula size 89804 variables 268 clauses 2307 time prepare 0.0
+sending to Z3
+loaded Z3 0.0
+Z3 answer -1 UNSAT elapsed 0.0
+
+COMMAND: python3 genus_sat_z3.py K5 1 30
+K5 V 5 E 10 test genus <= 1 required faces 5
+formula size 65606 variables 210 clauses 1686 time prepare 0.0
+sending to Z3
+loaded Z3 0.0
+Z3 answer 1 SAT elapsed 0.0
+
+COMMAND: python3 genus_sat_z3.py N00 2 30
+N00 V 35 E 61 test genus <= 2 required faces 24
+formula size 1802737 variables 7951 clauses 41397 time prepare 0.1
+sending to Z3
+loaded Z3 0.2
+Z3 answer -1 UNSAT elapsed 0.8
+
+COMMAND: python3 genus_sat_z3.py N00 3 30
+N00 V 35 E 61 test genus <= 3 required faces 22
+formula size 1664999 variables 7354 clauses 38242 time prepare 0.1
+sending to Z3
+loaded Z3 0.2
+Z3 answer 1 SAT elapsed 0.5
+
+COMMAND: python3 genus_sat_z3.py N0 2 30
+N0 V 37 E 64 test genus <= 2 required faces 25
+formula size 1933211 variables 8693 clauses 44304 time prepare 0.1
+sending to Z3
+loaded Z3 0.3
+Z3 answer -1 UNSAT elapsed 1.0
+
+COMMAND: python3 genus_sat_z3.py N0 3 30
+N0 V 37 E 64 test genus <= 3 required faces 23
+formula size 1791641 variables 8066 clauses 41075 time prepare 0.2
+sending to Z3
+loaded Z3 0.2
+Z3 answer 1 SAT elapsed 0.6
+
+COMMAND: python3 genus_sat_z3.py N1 3 30
+N1 V 37 E 64 test genus <= 3 required faces 23
+formula size 1779374 variables 8066 clauses 40803 time prepare 0.1
+sending to Z3
+loaded Z3 0.2
+Z3 answer -1 UNSAT elapsed 3.2
