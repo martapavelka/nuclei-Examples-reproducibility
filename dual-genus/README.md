@@ -1,37 +1,42 @@
 # Reproducibility package: orientable genus of the dual graphs of N00, N0, N1
 
-## Notation in the paper
+Updated 24 October 2026 to incorporate the independent verification of 23 October 2026. This README replaces the original `dual-genus/README.md`. The original source files and provenance are retained.
 
-The manuscript denotes the complexes as follows: `N00` = $N_{\min}$,
-`N0` = $N_{\mathrm{CEY}}$ (Collet--Eckmann--Younan), and `N1` =
-$N_{\mathrm{BL}}$ (Benedetti--Lutz). These are alternate names for the
-same complexes, not additional examples. The original `N00`, `N0`, `N1`
-identifiers remain in filenames, JSON keys, scripts, commands, logs, and
-certificates so that the computational evidence can be reproduced unchanged.
+## Notation and input
 
-The input files `N00.txt`, `N0.txt`, and `N1.txt` are the facet lists of $N_{\min}$, $N_{\mathrm{CEY}}$, and $N_{\mathrm{BL}}$, respectively. All three use vertex labels starting at 1.
+The names used in the paper and in the computations correspond as follows:
 
-## Purpose
-This package reproduces the orientable graph-genus computation for the dual graphs of three nuclei. A dual-graph vertex is a tetrahedron; two dual vertices are adjacent exactly when the tetrahedra share an interior triangle.
+`N00` denotes $N_{\min}$, `N0` denotes $N_{\mathrm{CEY}}$ (Collet, Eckmann, and Younan), and `N1` denotes $N_{\mathrm{BL}}$ (Benedetti and Lutz). These are the same three nuclei, not additional examples. The computational identifiers are preserved in all filenames and logs.
 
-## Contents
-- `N00.txt`, `N0.txt`, `N1.txt`: complete tetrahedron lists.
-- `dual_genus.py`: the supplied exact genus program.
-- `N00_exact_run.log`: verbatim user-provided exact rerun output establishing genus 3 for N00.
-- `dual_graph_summaries.json`: independently reconstructed basic graph data, requiring no SAT solver.
-- `run_all.sh`: one-command reproduction, including the program's self-test.
-- `requirements.txt`: Python dependencies.
-- `RESULT_STATUS.json`: deliberately separates previously reported results from what is certified in the present runtime.
-- `original_N0_Sage_notebook.ipynb`: original exploratory Sage notebook supplied by the authors; it contains N0 and calls `flip_graph().genus()`, but has no saved genus output.
-- `SHA256SUMS`: integrity hashes.
+The files `N00.txt`, `N0.txt`, and `N1.txt` contain the complete tetrahedron lists, with vertices numbered from 1. The dual graph has one vertex for each tetrahedron and one edge for each shared interior triangle. Its genus is the **orientable graph genus**.
 
-## Method
-`dual_genus.py` constructs the dual graph, decomposes it into biconnected blocks (orientable genus is additive over blocks), handles planar blocks directly, finds an upper-bound rotation system by simulated annealing, and uses SAT to ask whether a rotation system with sufficiently many faces exists at smaller genus. An UNSAT answer one level below a realized upper bound proves optimality. Every returned embedding is independently rechecked by face tracing and Euler characteristic.
+## Verified results and their scope
 
-This is stronger than merely finding a drawing/rotation of a certain genus: an embedding certifies an **upper bound**, while exactness requires the lower-bound/SAT part (or another rigorous lower bound).
+**N00 ($N_{\min}$):** 35 dual vertices, 61 dual edges, and an explicitly verified rotation system with 22 facial cycles, giving genus 3. The independent Z3 test returned UNSAT for genus at most 2. The original PySAT run also reports genus 3 in `N00_exact_run.log`.
 
-## Reproduce
-Use a normal Python environment with internet/package access:
+**N0 ($N_{\mathrm{CEY}}$):** 37 dual vertices, 64 dual edges, and an explicitly verified rotation system with 23 facial cycles, giving genus 3. The independent Z3 test returned UNSAT for genus at most 2.
+
+**N1 ($N_{\mathrm{BL}}$):** 37 dual vertices, 64 dual edges, and an explicitly verified rotation system with 21 facial cycles, giving genus 4. The independent Z3 test returned UNSAT for genus at most 3.
+
+The explicit rotation systems independently certify the upper bounds by face tracing and Euler's formula. The lower bounds rely on the correctness of the included SAT encoding and solver. No independently checkable DRAT/LRAT proof objects of UNSAT are provided; these are reproducible **computer-assisted** exact-genus results, not solver-independent lower-bound certificates. See `RESULT_STATUS.json` for per-example provenance and status.
+
+## Contents of the original package
+
+`N00.txt`, `N0.txt`, `N1.txt` contain the facet lists. `dual_genus.py` is the original PySAT-based genus program. `run_all.sh` runs its self-test and exact computations. `requirements.txt` lists the original Python dependencies. `dual_graph_summaries.json` contains independently reconstructed graph data. `N00_exact_run.log` records the earlier author-supplied exact PySAT output. `original_N0_Sage_notebook.ipynb` is exploratory provenance, without stored genus output. `PROVENANCE.txt` records the origin and limitations of the original files. `SHA256SUMS` is the original integrity manifest.
+
+The original `dual_genus.py` constructs the dual graph, decomposes it into biconnected blocks, searches for upper-bound rotation systems, and tests lower genus through SAT. As in the original package, its output depends on the PySAT backend. A timed-out SAT test yields bounds rather than a proof of exact genus.
+
+## Additional folder: independent-verification/
+
+Copy the **contents** of `Nuclei_Dual_Genus_Independent_Verification_2026-10-23/` from the independent verification archive into a new `dual-genus/independent-verification/` directory. Do not replace or delete the original files.
+
+This folder contains `N00_genus_embedding.json`, `N0_genus_embedding.json`, and `N1_genus_embedding.json`, with explicit cyclic orders of dual edges; `verify_embeddings.py`, which reconstructs the graphs and checks each rotation system without third-party dependencies; `genus_sat_z3.py`, a separate Boolean encoding tested using system Z3; `SAT_run_log.txt` and `embedding_checks_log.txt`, which record the 23 October results; and separate input lists, checksums, and its own detailed `README.md`.
+
+The original and independent programs use the same facet lists. The independent SAT program is **not** a replacement for the original PySAT implementation.
+
+## Reproduce the original PySAT calculations
+
+From `dual-genus/`, in a Python environment with package installation available:
 
 ```bash
 python3 -m venv .venv
@@ -40,18 +45,33 @@ pip install -r requirements.txt
 ./run_all.sh
 ```
 
-For a long exact run without a SAT timeout, `run_all.sh` deliberately does not pass `--timeout`. The default PySAT backend requested by the program is `cadical153`. You can select another installed PySAT solver with `--solver`.
+`run_all.sh` executes the program's self-test and then processes N00, N0, and N1 without imposing a SAT timeout. The default requested PySAT backend is `cadical153`. Generated files include `N00_run.log`, `N0_run.log`, `N1_run.log`, plus `*_certificate.txt` and `*_certificate.json`. The original package did not include complete PySAT execution logs for N0 or N1, and the separate original N00 transcript is retained as historical provenance.
 
-## Result status at package creation
-- **N0:** previously computed in this project as orientable dual-graph genus **3**. The package contains the exact input and solver needed to reproduce/certify this independently.
-- **N1:** previously computed in this project as orientable dual-graph genus **4**. The package contains the exact input and solver needed to reproduce/certify this independently.
-- **N00:** exact orientable dual-graph genus **3**. A user rerun of `dual_genus.py` found a genus-3 rotation system with 22 faces (`genus <= 3? yes`) and the SAT solver returned UNSAT for genus at most 2 (`genus <= 2? no`, requiring at least 24 faces). Hence `genus(N00)=3`. The verbatim supplied transcript is archived as `N00_exact_run.log`.
+## Reproduce the independent checks
 
-## Environment limitation during package creation
-The package-creation runtime had NetworkX but neither PySAT nor Sage, and outbound package installation was unavailable. The exact N00 SAT result was therefore produced by the user on a separate environment and its verbatim console transcript is archived here. The package-creation runtime did not independently rerun that SAT computation.
+From `dual-genus/independent-verification/`:
 
-## Independent sanity data
-`dual_graph_summaries.json` was generated independently of `dual_genus.py` directly from the facet lists. It checks the number of dual vertices/edges, boundary triangles, connectivity, and degree distribution.
+```bash
+python3 verify_embeddings.py
+python3 genus_sat_z3.py K4 0 30
+python3 genus_sat_z3.py K5 0 30
+python3 genus_sat_z3.py K5 1 30
+python3 genus_sat_z3.py N00 2 30
+python3 genus_sat_z3.py N0 2 30
+python3 genus_sat_z3.py N1 3 30
+```
 
-## Publication recommendation
-For a paper, retain the generated `*_run.log`, `*_certificate.txt`, and `*_certificate.json` from the exact rerun. The text/JSON rotation system is independently checkable as an upper-bound embedding. For the lower bound, archive the solver version and complete run log. Note that `dual_genus.py` currently relies on the SAT solver's UNSAT answer; it does not emit a DRAT/LRAT proof object. If proof-carrying SAT is desired, the next upgrade should export CNF and a machine-checkable UNSAT certificate.
+The embedding checker requires only Python 3. The SAT script requires the Linux shared library `libz3.so.4`; the archived tests used Z3 4.13.3.0. `30` is the per-test timeout in seconds, not a guarantee that the tests will finish in that time in every environment. The three nucleus tests should return `UNSAT`; the control checks should return `SAT` for K4 genus 0, `UNSAT` for K5 genus 0, and `SAT` for K5 genus 1. Treat `UNKNOWN` or a timeout as inconclusive.
+
+The Z3 checks and rotation-system verification were rerun successfully on 24 October 2026. The execution transcript from 23 October remains in `independent-verification/SAT_run_log.txt`.
+
+## Integrity and release preparation
+
+The original `SHA256SUMS` contains hashes of the **old** `README.md` and `RESULT_STATUS.json`; replacing those files makes the original checksum entries stale. After adding `independent-verification/` and replacing these two files, regenerate the parent manifest. Run from `dual-genus/`:
+
+```bash
+find . -type f ! -name SHA256SUMS ! -path './.venv/*' -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
+sha256sum -c SHA256SUMS
+```
+
+This hashes the current package, including any logs and certificates already in the directory; run it after finalizing the released contents. Preserve the historical transcripts, provenance, solver versions, and exact released commit or archive checksum. The independent solver does not generate proof-carrying UNSAT certificates; producing and checking such certificates would strengthen the lower-bound evidence further.
