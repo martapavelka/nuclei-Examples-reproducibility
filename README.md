@@ -1,54 +1,49 @@
-# Nuclei: reproducibility materials for the Examples section
+# Reproducibility materials: Counting Triangulated 3-Spheres, Nuclei, and Polyhedra
 
-Repository: https://github.com/martapavelka/nuclei-Examples-reproducibility
+This repository contains executable checks, data, and certificates for
+*Counting Triangulated 3-Spheres, Nuclei, and Polyhedra* by Bergfinnur
+Durhuus and Marta Pavelka. It includes the computer-assisted classification,
+explicit examples, knot certificates, intrinsic-polyhedron reconstruction,
+evasiveness checks, orientable dual-graph genus calculations, and a
+nonuniqueness example for boundary-edge reduction to atoms.
 
-Computational data, verification programs, certificates, and recorded results accompanying the **Examples** section of our paper on nuclei.
+## Identifiers and vertex labels
 
-**What is in this repository:** the six original reproducibility packages as browsable directories, without nested ZIPs or compiled Python caches. Their source files, data, results, documentation, and per-package SHA256 manifests are preserved. Each directory has a more detailed README with the exact proof and verification scope.
-
-## Names and vertex labels
-
-| Identifier in programs/data | Name in the paper | Meaning |
+| Dataset identifier | Paper identifier | Meaning |
 | --- | --- | --- |
-| `N00` | $N_{\min}$ | Unique nontrivial nucleus with 11 vertices, 35 tetrahedra |
-| `N0` | $N_{\mathrm{CEY}}$ | 12-vertex example of Collet–Eckmann–Younan |
-| `N1` | $N_{\mathrm{BL}}$ | 12-vertex example of Benedetti–Lutz |
-| `M1`, ..., `M9` | $N_{\min}^{(1)},\ldots,N_{\min}^{(9)}$ | Nine 12-vertex extensions of $N_{\min}$ |
+| `N00` | $N_{\min}$ | Unique 11-vertex nontrivial nucleus (35 tetrahedra) |
+| `N0` | $N_{\mathrm{CEY}}$ | 12-vertex nucleus of Collet, Eckmann, and Younan |
+| `N1` | $N_{\mathrm{BL}}$ | 12-vertex nucleus obtained from the Benedetti–Lutz ball |
+| `M1` ... `M9` | $N_{\min}^{(1)}$ ... $N_{\min}^{(9)}$ | Nine 12-vertex extensions |
 
-**Vertex-label convention:** `classification/results/n00_facets.json` uses 0-based labels; add 1 to compare with the paper. The other packaged facet lists generally use 1-based labels. See each README. The old identifiers are retained inside code and data to preserve the original checks and recorded outputs.
+**Vertex labels:** `classification/results/n00_facets.json` uses labels
+0 through 10. Add 1 to compare with the paper's tables. Other facet files
+use 1-based labels as documented in their directories. These identifiers
+are fixed by the included source and data.
 
-## Contents
+## Directory contents
 
-| Directory | Scope | Key entry point |
-| --- | --- | --- |
-| [`classification/`](classification/) | Lower bound of 11 vertices, 11-vertex classification, MILP enumeration, 89-step collapse certificate | `src/verify_n00_collapse_strict.py`, `src/verify_n00_positive.py`, `src/nucleus_lower_bound.py`, `src/classify_v11.py` |
-| [`unique-boundary-filling/`](unique-boundary-filling/) | Only nucleus filling of the boundary of $N_{\min}$ | `search_fixed_boundary.py` |
-| [`automorphisms/`](automorphisms/) | $\mathrm{Aut}(N_{\min})\cong C_2$ | `verify_automorphisms.py` |
-| [`spanning-edges/`](spanning-edges/) | Unknotted spanning-edge checks for $N_{\min}$ and its nine extensions | `verify_spanning_edges.py` |
-| [`trefoil-edges/`](trefoil-edges/) | Trefoil certificates for edges $\{9,11\}$ of $N_{\mathrm{CEY}}$ and $\{2,3\}$ of $N_{\mathrm{BL}}$ | `verify_inputs.py`, `certify_trefoil_edges.py` |
-| [`dual-genus/`](dual-genus/) | Dual-graph genus computations for the three named examples | `dual_genus.py`, `run_all.sh` |
+| Directory | Main checks |
+| --- | --- |
+| `classification/` | Vertex lower bound, exhaustive 11-vertex enumeration, collapse certificate |
+| `unique-boundary-filling/` | Unique 3-ball nucleus filling of the boundary of $N_{\min}$ |
+| `automorphisms/` | $\mathrm{Aut}(N_{\min})\cong C_2$; nine boundary-triangle orbits and pairwise non-isomorphic 12-vertex extensions |
+| `spanning-edges/` | Unknotted spanning-edge certificates and nine extensions |
+| `trefoil-edges/` | Trefoil certificates for $N_{\mathrm{CEY}}$ and $N_{\mathrm{BL}}$ |
+| `dual-genus/` | Dual graph orientable genera 3, 3, and 4 (PySAT and Z3) |
+| `nuclei_intrinsic_spines_and_evasiveness/` | Intrinsic polyhedra, region attaching words, Figure 12 (intrinsic-polyhedron attaching maps), evasiveness |
+| `atom-reduction-nonuniqueness/` | Explicit counterexample to uniqueness of atom reduction, with facet lists and contraction certificates |
+| `scripts/` | Repository-wide quick checks and SHA256 manifest verification |
 
-The trefoil package repeats some of the spanning-edge package's original data and source so that **each package remains independently usable**.
+## Quick verification
 
-## Start here: inexpensive checks
-
-Python 3 is required. The basic classification and automorphism verifiers use the standard library; the positive verification uses the bundled classification program and may require NumPy and SciPy. Trefoil reconstruction requires SymPy.
-
-From the repository root:
+Run the following from the repository root:
 
 ```bash
-python3 automorphisms/verify_automorphisms.py
-python3 classification/src/verify_n00_collapse_strict.py classification/results/n00_collapse_certificate.json
-python3 classification/src/verify_n00_positive.py
-python3 trefoil-edges/verify_inputs.py
-python3 scripts/verify_checksums.py
+python3 scripts/quick_check.py
 ```
 
-For a single command running these checks, use `python3 scripts/quick_check.py` (see its output for skipped/missing dependencies).
-
-## Recomputing the longer results
-
-Install the Python dependencies you need (a fresh virtual environment is recommended):
+For the optional computations, install the required dependencies:
 
 ```bash
 python3 -m venv .venv
@@ -56,42 +51,30 @@ source .venv/bin/activate
 pip install -r requirements-recommended.txt
 ```
 
-To recompute trefoil certificates:
+Detailed instructions, stored results, computational assumptions, and
+limitations are provided in each directory's `README.md`. The expensive
+exhaustive searches and SAT infeasibility checks are not part of the quick
+verification command.
 
-```bash
-cd trefoil-edges
-python3 certify_trefoil_edges.py
-```
+## Mathematical scope
 
-The command above **regenerates and overwrites** `trefoil_certificates.json`. Run it in a clean working tree or a copy if you want to compare recorded output.
+The verification scripts establish finite combinatorial claims and supply
+explicit certificates. Their topological interpretations require standard
+PL topology, as described in the paper and the package READMEs. The
+classification and SAT-based genus lower bounds depend on the correctness
+of the encodings and solvers; independently checkable UNSAT/MILP proof
+objects are not included. Rotation systems, collapse certificates, and the boundary-edge
+contraction/non-contraction certificates are independently checkable positive witnesses.
 
-To rerun the lower-bound search, from `classification/` build the bundled `plantri` source and run:
+## Integrity and citation
 
-```bash
-mkdir -p build
-unzip src/plantri-master.zip -d build
-make -C build/plantri-master plantri
-python3 src/nucleus_lower_bound.py --plantri build/plantri-master/plantri --min-v 4 --max-v 10 --out reproduced_lower_bound
-```
+`python3 scripts/verify_checksums.py` checks the SHA256 manifests for all
+research directories. Cite the paper and an immutable release or commit of
+this repository when reusing these results.
 
-For the exhaustive **11-vertex classification** run, use `classification/src/classify_v11.py` with the same `plantri` executable and consult [`classification/README.md`](classification/README.md). That search can take substantial time. Similarly, the fixed-boundary search, all-edge collapses, and exact dual-genus SAT search can take a long time. Their README files give their precise commands and limitations.
-
-For exact orientable genus, `dual-genus/dual_genus.py` uses NetworkX and PySAT, including an available SAT backend (default `cadical153`). **The preserved `dual-genus/requirements.txt` from the research archive is empty**; use the new root `requirements-recommended.txt` to install the required packages. Simply finding a rotation system establishes an upper bound; an exact genus claim additionally depends on the lower-bound SAT result.
-
-## Computational verification status
-
-The packaged **v=4,...,10** enumeration was rerun (306 boundary types and no feasible instances). The stored **v=11** enumeration totals 1,829 candidate fillings, one surviving nucleus, and an 89-step positive collapse certificate. The complete expensive v=11 enumeration **was not independently rerun for the October 2026 revision**; see [`classification/README.md`](classification/README.md) for that distinction.
-
-For the dual-graph genera, recorded claims are 3 for $N_{\min}$, 3 for $N_{\mathrm{CEY}}$, and 4 for $N_{\mathrm{BL}}$. The precise provenance and which SAT runs were replayed are documented in [`dual-genus/README.md`](dual-genus/README.md) and [`dual-genus/RESULT_STATUS.json`](dual-genus/RESULT_STATUS.json). In particular, the historical genus-3 result for $N_{\min}$ is recorded as a user-supplied SAT run transcript; no independent UNSAT certificate is bundled.
-
-The combinatorial and algebraic verifiers reproduce **computational witnesses**; their mathematical implications additionally use the topological lemmas discussed in the individual package READMEs. No solver-independent proof objects are claimed for MILP infeasibility or SAT UNSAT conclusions.
-
-## Integrity and provenance
-
-Every package contains its own `SHA256SUMS` (or `SHA256SUMS.txt`) for its research files. `python3 scripts/verify_checksums.py` checks all six. The per-package files are not renamed or rewritten to preserve these checksums; the top-level documentation and checking scripts are new. Build products (`__pycache__`, `.pyc`), generated outputs, and local virtual environments are not part of the versioned release.
-
-## Citation and reuse
-
-When using these computations, please cite **the associated nuclei paper** as well as any underlying works named in its bibliography. Add the final paper title, authors, DOI/arXiv URL, and version here when public.
-
-**Licensing has not yet been specified by the authors.** The bundled `plantri` source is a third-party component and may have its own licensing and attribution requirements. Please do not assume that a license applied to original scripts would also apply to `plantri`; refer to its bundled upstream files.
+`plantri` is a third-party program by Gunnar Brinkmann and Brendan McKay,
+with contributions from Heidi Van den Camp. Its source code is **not bundled**.
+Download it separately from the [official plantri website](https://users.cecs.anu.edu.au/~bdm/plantri/)
+if reproducing the classification; see `classification/README.md`.
+A licence for the authors' original code and materials should be specified
+by the authors before a licensing claim is made.

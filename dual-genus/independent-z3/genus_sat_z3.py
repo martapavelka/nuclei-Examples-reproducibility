@@ -6,6 +6,7 @@ An UNSAT result at genus g proves there is no genus <=g rotation system.
 Requires Python 3 and libz3. The solver does not emit an UNSAT proof file.
 """
 import ctypes,sys,itertools,time,re
+import ctypes.util
 from collections import defaultdict
 from pathlib import Path
 
@@ -25,7 +26,14 @@ class SAT:
     self.clause(-lits[i],s[i]);self.clause(-s[i-1],s[i]);self.clause(-lits[i],-s[i-1])
  def onehot(self,lits):self.clause(*lits);self.atmostone(lits)
  def solve(self,sec):
-  z=ctypes.CDLL('/usr/lib/x86_64-linux-gnu/libz3.so.4')
+  library=ctypes.util.find_library('z3')
+  if not library:
+   try:
+    from z3 import z3core
+    library=str(Path(z3core.__file__).resolve().parent/'lib'/'libz3.so')
+   except ImportError:
+    raise RuntimeError('Z3 not found: install system libz3 or pip install z3-solver')
+  z=ctypes.CDLL(library)
   z.Z3_mk_config.restype=ctypes.c_void_p
   z.Z3_mk_context.argtypes=[ctypes.c_void_p];z.Z3_mk_context.restype=ctypes.c_void_p
   z.Z3_mk_solver.argtypes=[ctypes.c_void_p];z.Z3_mk_solver.restype=ctypes.c_void_p

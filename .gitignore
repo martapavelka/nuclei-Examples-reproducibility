@@ -1,0 +1,15 @@
+# Local environments and interpreter caches
+.venv/
+__pycache__/
+*.pyc
+
+# LaTeX build intermediates (keep the distributed PDFs)
+*.aux
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.toc
+
+# System files
+.DS_Store

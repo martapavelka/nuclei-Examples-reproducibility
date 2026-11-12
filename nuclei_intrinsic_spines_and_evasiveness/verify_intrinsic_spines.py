@@ -182,7 +182,50 @@ def matches_bing(paths,words):
                     return mark,reverse,sm
     return None
 
+# Labelling of the intrinsic-polyhedron figure in the paper: e1 loop at v1, e2 loop at v2,
+# e3: v1 -> v2, e4: v2 -> v1.  Relabelling of the Fagan--Qiu--Wang names:
+# 1 -> e1, 2 -> e3^-1, 3 -> e4, 4 -> e2.
+PAPER_ENDS = {1: ('v1', 'v1'), 2: ('v2', 'v2'), 3: ('v1', 'v2'), 4: ('v2', 'v1')}
+FQW_TO_PAPER = {1: 1, 2: -3, 3: 4, 4: 2}
+PAPER_BIG = tuple(FQW_TO_PAPER[abs(x)] * (1 if x > 0 else -1) for x in BING_BIG)
+
+def letter_ends(x, ends):
+    a, b = ends[abs(x)]
+    return (a, b) if x > 0 else (b, a)
+
+def is_closed_walk(word, ends):
+    return all(letter_ends(word[i], ends)[1] == letter_ends(word[(i + 1) % len(word)], ends)[0]
+               for i in range(len(word)))
+
+def equal_up_to_rotation_and_reversal(a, b):
+    return cyclic_equal(list(a), list(b)) or cyclic_equal([-x for x in reversed(a)], list(b))
+
+def paper_labelling(N, paths, words):
+    """Find names e1..e4 and v1, v2 for the computed singular graph such that
+    the computed words are the paper's words, and return them."""
+    junction = sorted({p[0] for p, _ in paths} | {p[-1] for p, _ in paths})
+    for v1, v2 in permutations(junction):
+        vname = {v1: 'v1', v2: 'v2'}
+        ends = {i + 1: (vname[p[0]], vname[p[-1]]) for i, (p, _) in enumerate(paths)}
+        for perm in permutations((1, 2, 3, 4)):
+            for signs in product((-1, 1), repeat=4):
+                ren = {i + 1: signs[i] * perm[i] for i in range(4)}
+                # the renaming must carry the computed edge ends to PAPER_ENDS
+                if any(letter_ends(ren[i], PAPER_ENDS) != ends[i] for i in ren):
+                    continue
+                mapped = [[ren[abs(x)] * (1 if x > 0 else -1) for x in w] for w in words]
+                big = [w for w in mapped if len(w) == 10]
+                small = sorted(abs(w[0]) for w in mapped if len(w) == 1)
+                if len(big) == 1 and small == [1, 2] and equal_up_to_rotation_and_reversal(big[0], PAPER_BIG):
+                    return {'v1': N[v1], 'v2': N[v2]}, ren, mapped
+    return None
+
+def fmt(word):
+    return ' '.join('e%d' % x if x > 0 else 'e%d^-1' % -x for x in word)
+
 def main():
+    assert is_closed_walk(PAPER_BIG, PAPER_ENDS)
+    assert sorted(Counter(abs(x) for x in PAPER_BIG).values()) == [2, 2, 3, 3]
     for label,pretty in [('N00','N_min'),('N0','N_CEY'),('N1','N_BL')]:
         N,paths,regions,words=read_polyhedron(COMPLEXES[label])
         loops=sum(p[0]==p[-1] for p,f in paths)
@@ -194,6 +237,15 @@ def main():
             print('  Bing house identification PASS; renaming of oriented intrinsic edges:',match[0])
             print('  long attaching word:',match[1])
             print('  small boundary words:',match[2])
+            lab = paper_labelling(N, paths, words)
+            assert lab, 'no labelling matching the paper figure'
+            verts, ren, mapped = lab
+            for w in mapped:
+                assert is_closed_walk(w, PAPER_ENDS)
+            print('  Paper figure labelling: v1 =', list(verts['v1']), ', v2 =', list(verts['v2']))
+            print('  (e1 loop at v1, e2 loop at v2, e3: v1->v2, e4: v2->v1)')
+            print('  dR1 =', fmt([1]), '  dR2 =', fmt([2]))
+            print('  dR3 =', fmt(PAPER_BIG), '  (closed walk; every edge lies on exactly 3 region sides)')
         else:
             assert len(paths)==2 and loops==2 and len(regions)==2
             print('  complexity-one three-ball spine (the abalone): PASS')

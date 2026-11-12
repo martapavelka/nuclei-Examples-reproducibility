@@ -5,11 +5,9 @@
 The manuscript denotes the complexes as follows: `N00` = $N_{\min}$,
 `N0` = $N_{\mathrm{CEY}}$ (Collet--Eckmann--Younan), and `N1` =
 $N_{\mathrm{BL}}$ (Benedetti--Lutz). These are alternate names for the
-same complexes, not additional examples. The original `N00`, `N0`, `N1`
-identifiers remain in filenames, JSON keys, scripts, commands, logs, and
-certificates so that the computational evidence can be reproduced unchanged.
+same complexes, not additional examples. The identifiers `N00`, `N0`, `N1` are used in code, data, and certificates.
 
-This archive concerns **only** $N_{\min}$ (`N00`); the facet list uses labels $1,\ldots,11$.
+This directory concerns **only** $N_{\min}$ (`N00`); the facet list uses labels $1,\ldots,11$.
 
 This package reproduces the computer-assisted verification that the 18-triangle boundary sphere of N00 has exactly one filling that is both a nucleus and a triangulated 3-ball: N00 itself.
 

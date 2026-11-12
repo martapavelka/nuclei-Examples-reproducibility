@@ -11,12 +11,17 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{remark}[theorem]{Remark}
 
-\title{The Smallest Nontrivial Nucleus: An Exhaustive Computational Classification}
-\author{}
+\title{The Vertex-Minimal Nontrivial Nucleus: An Exhaustive Computational Classification}
+\author{Bergfinnur Durhuus and Marta Pavelka}
 \date{}
 
 \begin{document}
 \maketitle
+
+\noindent
+Supplementary computational details for
+\emph{Counting Triangulated 3-Spheres, Nuclei, and Polyhedra}.
+
 
 \section{Nuclei and the search bounds}
 
@@ -103,9 +108,13 @@ The numbers of boundary types are
 \end{array}
 \]
 Thus there are $306$ types for $4\le v\le10$ and $1249$ types for $v=11$.
-We regenerated these counts with the supplied \texttt{plantri} source.
-The generated $v=11$ output is byte-for-byte identical to the
-$\texttt{data/boundaries\_v11.asc}$ file in the reproducibility package.
+The lists used in this classification are included in the reproducibility
+package as \texttt{data/boundaries\_v4.asc} through
+\texttt{data/boundaries\_v11.asc}. The \texttt{plantri} program can be
+obtained separately from its official distribution at
+\url{https://users.cecs.anu.edu.au/~bdm/plantri/}.
+Different software versions may list the same combinatorial types in a
+different order; the original input files are therefore retained.
 
 \section{A necessary binary filling model}\label{sec:binary-model}
 
@@ -186,9 +195,8 @@ $z_e$.  This will justify blocking solutions using only the $x_Q$ variables.
 For each of the $306$ boundary spheres with $4\le v\le10$, the model in
 Section~\ref{sec:binary-model} was solved as a binary feasibility problem
 using SciPy's interface to HiGHS.  All $306$ instances were reported
-infeasible.  This lower-bound run was independently repeated for the present
-revision; the regenerated boundary files and machine-readable result log
-are included with the revised package.
+infeasible.  The boundary files and machine-readable feasibility results
+are included in the reproducibility package.
 
 \begin{theorem}\label{thm:11vertices}
 Every nontrivial nucleus has at least $11$ vertices.
@@ -308,23 +316,24 @@ Theorem~\ref{thm:unique11} establishes existence and uniqueness at $11$.
 
 \section{Reproducibility and scope of the certificates}
 
-The revised reproducibility package contains the \texttt{plantri} source,
-the common binary-model implementation, the $v=11$ classification driver,
+The reproducibility package contains the stored \texttt{plantri} outputs,
+not the program's source, which is available separately from its official
+website. It contains the common binary-model implementation, the $v=11$ classification driver,
 the $1249$ stored boundary representatives, the recorded $v=11$ count table,
 the facet list and collapse certificate for $N_{\min}$, and their checksums.
-It additionally contains the regenerated boundary data and complete
-machine-readable log for the $v\le10$ lower-bound run, together with a
-strict verifier of the collapse certificate.
+It also contains the boundary data and complete
+machine-readable results for the $v\le10$ lower-bound run, together with a
+verifier of the collapse certificate.
 
 From the package root, the principal commands are:
 \begin{verbatim}
-unzip src/plantri-master.zip -d build
-make -C build/plantri-master plantri
+# Obtain and compile plantri from its official website first.
+PLANTRI=/absolute/path/to/plantri
 python src/nucleus_lower_bound.py \
-    --plantri build/plantri-master/plantri \
+    --plantri "$PLANTRI" \
     --min-v 4 --max-v 10 --out reproduced_lower_bound
 python src/classify_v11.py \
-    --plantri build/plantri-master/plantri \
+    --plantri "$PLANTRI" \
     --out reproduced_v11.json
 python src/verify_n00_collapse_strict.py \
     results/n00_collapse_certificate.json
@@ -332,11 +341,11 @@ sha256sum -c SHA256SUMS.txt
 \end{verbatim}
 
 \begin{remark}[Computational status]\label{rem:computational-status}
-The $v\le10$ infeasibility computation and the positive $N_{\min}$
-checks were rerun for this revision.  The $v=11$ counts above are the
-recorded results of the earlier exhaustive computation and were checked
-against the supplied result files, but the entire $v=11$ enumeration was
-not rerun for this revision.  It can be repeated with the included driver.
+The $v\le10$ infeasibility results and the positive $N_{\min}$
+checks are reproducible by the supplied programs. The $v=11$ counts
+are provided as machine-readable summaries of the exhaustive enumeration;
+they can be recomputed with the included driver. The negative results
+do not include independently checkable solver proof objects.
 
 The negative conclusions depend on the correctness of \texttt{plantri}, the
 binary-model encoding, and the HiGHS feasibility and infeasibility decisions.

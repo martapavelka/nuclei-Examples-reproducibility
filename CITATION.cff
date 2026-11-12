@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "Please cite the associated paper and this repository when using the data or code."
+title: "Reproducibility materials for Counting Triangulated 3-Spheres, Nuclei, and Polyhedra"
+type: software
+authors:
+  - family-names: Pavelka
+    given-names: Marta
+repository-code: "https://github.com/martapavelka/nuclei-Examples-reproducibility"

@@ -8,9 +8,15 @@ ROOT = Path(__file__).resolve().parent.parent
 COMMANDS = [
     ["scripts/verify_checksums.py"],
     ["automorphisms/verify_automorphisms.py"],
+    ["automorphisms/verify_nine_extensions.py"],
     ["classification/src/verify_n00_collapse_strict.py", "classification/results/n00_collapse_certificate.json"],
     ["classification/src/verify_n00_positive.py"],
     ["trefoil-edges/verify_inputs.py"],
+    ["dual-genus/independent-z3/verify_embeddings.py"],
+    ["nuclei_intrinsic_spines_and_evasiveness/verify_intrinsic_spines.py"],
+    ["nuclei_intrinsic_spines_and_evasiveness/verify_evasiveness.py"],
+    ["atom-reduction-nonuniqueness/verify.py"],
+    ["atom-reduction-nonuniqueness/verify_artifacts.py"],
 ]
 
 def main():

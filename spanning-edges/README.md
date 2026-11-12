@@ -5,13 +5,11 @@
 The manuscript denotes the complexes as follows: `N00` = $N_{\min}$,
 `N0` = $N_{\mathrm{CEY}}$ (Collet--Eckmann--Younan), and `N1` =
 $N_{\mathrm{BL}}$ (Benedetti--Lutz). These are alternate names for the
-same complexes, not additional examples. The original `N00`, `N0`, `N1`
-identifiers remain in filenames, JSON keys, scripts, commands, logs, and
-certificates so that the computational evidence can be reproduced unchanged.
+same complexes, not additional examples. The identifiers `N00`, `N0`, `N1` are used in code, data, and certificates.
 
-This archive contains `N00` and `M1`--`M9`, but not `N0` or `N1`. The working identifiers `M1`--`M9` denote the nine nuclei $N_{\min}^{(1)},\ldots,N_{\min}^{(9)}$ in the paper. All stored facets use labels starting at 1.
+This directory contains `N00` and `M1`--`M9`, but not `N0` or `N1`. The working identifiers `M1`--`M9` denote the nine nuclei $N_{\min}^{(1)},\ldots,N_{\min}^{(9)}$ in the paper. All stored facets use labels starting at 1.
 
-This package records and reproduces the spanning-edge calculations for the 11-vertex nucleus `N00` and the nine 12-vertex nuclei `M1,...,M9` obtained from it by the boundary attachment + 2-to-3 construction.
+This package records and reproduces the spanning-edge calculations for the 11-vertex nucleus `N00` and the nine 12-vertex nuclei `M1,...,M9` obtained from it by the boundary attachment + 2-to-3 construction. Their pairwise non-isomorphism and the nine distinct boundary-triangle orbits are certified in `../automorphisms/verify_nine_extensions.py`.
 
 ## Contents
 
@@ -20,7 +18,6 @@ This package records and reproduces the spanning-edge calculations for the 11-ve
 - `REDUCTION_LEMMA.md` — PL reduction explaining why old spanning edges retain their knot type and why only `[x,12]` is new.
 - `results_M4_all_edges.json`, `results_M5_all_edges.json`, `results_M6_all_edges.json` — recorded complete 28-edge interactive runs.
 - `results_M7_M9_new_edges.json` — recorded interactive certificates for the three final new edges.
-- `PROVENANCE.txt` — scope and provenance of the recorded outputs.
 - `SHA256SUMS` — hashes of package files.
 
 ## Reproduce the economical proof
@@ -45,10 +42,8 @@ To rerun all spanning edges of `N00`:
 
 The computation supplies explicit collapse certificates. The manuscript should state/cite separately the standard PL-topological implication used after the computation: the relevant exterior is a compact PL 3-manifold; collapsing to a connected rank-one graph makes it a genus-one handlebody (solid torus), and a properly embedded spanning arc in `B^3` with solid-torus exterior is unknotted.
 
-Together with the old-edge reduction, it is enough to check the one new edge in each `Mi`. The package intentionally keeps this PL reduction logically separate from the computational certificate.
+Together with the old-edge reduction, it is enough to check the one new edge in each `Mi`. The PL reduction is logically separate from the computational certificate.
 
-## Recorded-results caveat
+## Scope of included results
 
-The files for `M4`, `M5`, and `M6` record complete interactive 28-edge runs. `M7`--`M9` record the final new-edge runs. Earlier interactive checks of `M1`--`M3` are not copied into a precomputed JSON here because their full improved-routine logs were not retained in the current runtime; they are reproducible directly from `complexes.json` with the included verifier. No missing log is presented as a certificate.
-
-Collapse counts and final graph sizes depend on the deterministic collapse choices in the implementation. The invariant acceptance condition is the explicit collapse to a connected rank-one graph.
+The included JSON files give full 28-edge checks for `M4`, `M5` and `M6` and checks of the new edges of `M7` through `M9`. Checks of the new edges of `M1` through `M3` and all spanning edges of `N00` are reproducible using the provided verifier, but their result JSONs are not included. The acceptance condition is an explicit collapse to a connected rank-one graph; collapse counts can depend on deterministic tie-breaking.

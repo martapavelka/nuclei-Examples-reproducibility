@@ -1,0 +1,70 @@
+\begin{tikzpicture}[
+  mid/.style={decoration={markings,mark=at position 0.55 with {\arrow{>}}},postaction={decorate}},
+  vert/.style={fill=black!70}]
+\begin{scope}[shift={(0,0)}]
+\draw[eone,very thick,mid] (0,0) .. controls (-2.2,1.9) and (-2.2,-1.9) .. (0,0) node[pos=0.5,left,black] {$e_1$};
+\draw[etwo,very thick,mid] (3,0) .. controls (5.2,-1.9) and (5.2,1.9) .. (3,0) node[pos=0.5,right,black] {$e_2$};
+\draw[ethree,very thick,mid] (0,0) to[bend left=35] node[above,black] {$e_3$} (3,0);
+\draw[efour,very thick,mid] (3,0) to[bend left=35] node[below,black] {$e_4$} (0,0);
+\fill[vert] (0,0) circle (1.8pt) node[right=3pt] {$v_1$};
+\fill[vert] (3,0) circle (1.8pt) node[left=3pt] {$v_2$};
+\node at (1.5,-2.0) {(a)};
+\end{scope}
+\begin{scope}[shift={(6.9,0)}]
+\fill[Ronefill] (0,0) circle (0.8);
+\node at (0,0) {$R_1$};
+\draw[eone,very thick,decoration={markings,mark=at position 0.55 with {\arrow{>}}},postaction={decorate}] (0,0) ++(-90.0:0.8) arc[start angle=-90.0,end angle=-450.0,radius=0.8];
+\node[font=\small] at (-0.000,1.180) {$e_1$};
+\fill[vert] (0.000,-0.800) circle (1.6pt);
+\node[font=\scriptsize] at (0.000,-0.480) {$v_1$};
+\fill[Rtwofill] (2.4,0) circle (0.8);
+\node at (2.4,0) {$R_2$};
+\draw[etwo,very thick,decoration={markings,mark=at position 0.55 with {\arrow{>}}},postaction={decorate}] (2.4,0) ++(-90.0:0.8) arc[start angle=-90.0,end angle=-450.0,radius=0.8];
+\node[font=\small] at (2.400,1.180) {$e_2$};
+\fill[vert] (2.400,-0.800) circle (1.6pt);
+\node[font=\scriptsize] at (2.400,-0.480) {$v_2$};
+\fill[Rthreefill] (5.4,0) circle (1.45);
+\node at (5.4,0) {$R_3$};
+\draw[efour,very thick,decoration={markings,mark=at position 0.55 with {\arrow{>}}},postaction={decorate}] (5.4,0) ++(90.0:1.45) arc[start angle=90.0,end angle=54.0,radius=1.45];
+\node[font=\small] at (5.966,1.740) {$e_4$};
+\fill[vert] (5.400,1.450) circle (1.6pt);
+\node[font=\scriptsize] at (5.400,1.130) {$v_2$};
+\draw[eone,very thick,decoration={markings,mark=at position 0.55 with {\arrow{<}}},postaction={decorate}] (5.4,0) ++(54.0:1.45) arc[start angle=54.0,end angle=18.0,radius=1.45];
+\node[font=\small] at (6.881,1.076) {$e_1$};
+\fill[vert] (6.252,1.173) circle (1.6pt);
+\node[font=\scriptsize] at (6.064,0.914) {$v_1$};
+\draw[efour,very thick,decoration={markings,mark=at position 0.55 with {\arrow{<}}},postaction={decorate}] (5.4,0) ++(18.0:1.45) arc[start angle=18.0,end angle=-18.0,radius=1.45];
+\node[font=\small] at (7.230,0.000) {$e_4$};
+\fill[vert] (6.779,0.448) circle (1.6pt);
+\node[font=\scriptsize] at (6.475,0.349) {$v_1$};
+\draw[ethree,very thick,decoration={markings,mark=at position 0.55 with {\arrow{<}}},postaction={decorate}] (5.4,0) ++(-18.0:1.45) arc[start angle=-18.0,end angle=-54.0,radius=1.45];
+\node[font=\small] at (6.881,-1.076) {$e_3$};
+\fill[vert] (6.779,-0.448) circle (1.6pt);
+\node[font=\scriptsize] at (6.475,-0.349) {$v_2$};
+\draw[eone,very thick,decoration={markings,mark=at position 0.55 with {\arrow{<}}},postaction={decorate}] (5.4,0) ++(-54.0:1.45) arc[start angle=-54.0,end angle=-90.0,radius=1.45];
+\node[font=\small] at (5.966,-1.740) {$e_1$};
+\fill[vert] (6.252,-1.173) circle (1.6pt);
+\node[font=\scriptsize] at (6.064,-0.914) {$v_1$};
+\draw[ethree,very thick,decoration={markings,mark=at position 0.55 with {\arrow{>}}},postaction={decorate}] (5.4,0) ++(-90.0:1.45) arc[start angle=-90.0,end angle=-126.0,radius=1.45];
+\node[font=\small] at (4.834,-1.740) {$e_3$};
+\fill[vert] (5.400,-1.450) circle (1.6pt);
+\node[font=\scriptsize] at (5.400,-1.130) {$v_1$};
+\draw[etwo,very thick,decoration={markings,mark=at position 0.55 with {\arrow{<}}},postaction={decorate}] (5.4,0) ++(-126.0:1.45) arc[start angle=-126.0,end angle=-162.0,radius=1.45];
+\node[font=\small] at (3.919,-1.076) {$e_2$};
+\fill[vert] (4.548,-1.173) circle (1.6pt);
+\node[font=\scriptsize] at (4.736,-0.914) {$v_2$};
+\draw[ethree,very thick,decoration={markings,mark=at position 0.55 with {\arrow{<}}},postaction={decorate}] (5.4,0) ++(-162.0:1.45) arc[start angle=-162.0,end angle=-198.0,radius=1.45];
+\node[font=\small] at (3.570,-0.000) {$e_3$};
+\fill[vert] (4.021,-0.448) circle (1.6pt);
+\node[font=\scriptsize] at (4.325,-0.349) {$v_2$};
+\draw[efour,very thick,decoration={markings,mark=at position 0.55 with {\arrow{<}}},postaction={decorate}] (5.4,0) ++(-198.0:1.45) arc[start angle=-198.0,end angle=-234.0,radius=1.45];
+\node[font=\small] at (3.919,1.076) {$e_4$};
+\fill[vert] (4.021,0.448) circle (1.6pt);
+\node[font=\scriptsize] at (4.325,0.349) {$v_1$};
+\draw[etwo,very thick,decoration={markings,mark=at position 0.55 with {\arrow{<}}},postaction={decorate}] (5.4,0) ++(-234.0:1.45) arc[start angle=-234.0,end angle=-270.0,radius=1.45];
+\node[font=\small] at (4.834,1.740) {$e_2$};
+\fill[vert] (4.548,1.173) circle (1.6pt);
+\node[font=\scriptsize] at (4.736,0.914) {$v_2$};
+\node at (2.9,-2.0) {(b)};
+\end{scope}
+\end{tikzpicture}
